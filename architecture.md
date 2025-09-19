@@ -25,11 +25,14 @@ To enable seamless discovery and integration, each module exposes a manifest—a
     "json": "/data.json"
   }
 }
+```
+
 This approach ensures self-description (modules announce their capabilities without hardcoding), inspectability (apps and other modules can query and adapt dynamically), and modularity (each module remains sovereign, yet discoverable). Some modules, like the weather station, contain multiple sensors. For example, a weather ESP32 might include a BME280 sensor (temperature, humidity, pressure), a rain gauge, and wind speed and direction sensors. While the BME280 provides three distinct readings, it is treated as one physical sensor with three logical outputs. This distinction simplifies wiring and failure handling while preserving data granularity.
 
 In early stages, data will be served via standard HTTP and viewed in a browser. However, as Campernet grows, browser-based access becomes limiting. A dedicated Campernet app will offer autodiscovery of active modules via mDNS, UDP, or registry queries; dynamic UI based on available sensors and endpoints; structured data parsing via JSON; offline resilience and caching; and messaging and control across modules. This shift from browser to app reflects the architectural need for modular, inspectable APIs and adaptive interfaces.
 
 Future considerations include a voice assistant, possibly based around Open Voice OS (OVOS) and a large language model such as TinyLlama via Llamafile. The access points will probably need some sort of password protection.
+
 What we want to avoid is creeping back to someone else’s system for the sake of convenience. Home Assistant seems to be an admirable open source setup and there would be definite advantages to using meshtastic for messaging, but Campernet has its own ethos that we don’t want to dilute. The Campernet lanifesto has been published elsewhere but I will repeat it here:
 
 ## 📃 The Campernet Lanifesto
